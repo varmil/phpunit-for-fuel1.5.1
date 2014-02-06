@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Phing build config file.
+    @link http://www.phing.info/
+-->
+<project name="fuel_jenkins" basedir="." default="all">
+  <!-- Properties -->
+  <property name="outputDir" value="./test_result"/>
+
+  <target name="phpcpd">
+    <phpcpd minTokens="10">
+      <fileset dir=".">
+          <include name="**/**/*.php"/>
+          <exclude name="./phpdoc/**/*.php"/>
+      </fileset>
+      <formatter type="pmd"
+                 outfile="${outputDir}/cpd.xml"/>
+    </phpcpd>
+  </target>
+
+  <target name="phpmd">
+    <phpmd rulesets="ruleset.xml">
+      <fileset dir=".">
+        <include name="**/*.php" />
+      </fileset>
+      <formatter type="xml"
+                 outfile="${outputDir}/pmd.xml"/>
+    </phpmd>
+  </target>
+
+ <target name="phpunit">
+   <phpunit>
+     <formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
+     <batchtest>
+       <fileset dir=".">
+         <include name="**/*Test.php"/>
+       </fileset>
+     </batchtest>
+   </phpunit>
+ </target>
+
+  <target name="phpdoc">
+    <mkdir dir="phpdoc" />
+    <phpdoc title="API Documentation"
+            destdir="./phpdoc"
+            output="HTML:Smarty:PHP">
+      <fileset dir=".">
+      </fileset>
+    </phpdoc>
+  </target>
+
+  <target name="all" depends="phpunit">
+  </target>
+
+</project>
+
