@@ -7,6 +7,39 @@
   <!-- Properties -->
   <property name="outputDir" value="./test_result"/>
 
+	<target name="phpunit">
+		<mkdir dir="${outputDir}/coverage" />
+		<mkdir dir="${outputDir}/unitereport" />
+		<!-- コードカバレッジのsetup -->
+		<coverage-setup database="${outputDir}/coverage/coverage.db">
+			<fileset dir="fuel/app/classes/">
+			   <exclude name="**/*Test.php"/>
+		   </fileset>
+		</coverage-setup>
+		<!-- phpunitの実行 -->
+		<phpunit
+			configuration="fuel/app/phpunit.xml"
+			printsummary="true"
+			codecoverage="true"
+		>
+			<formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
+			<batchtest>
+				<fileset dir=".">
+					<include name="fuel/app/tests/**/**.php"/>
+				</fileset>
+			</batchtest>
+		</phpunit>
+		<!-- コードカバレッジのレポート。XML⇒HTML変換 -->
+		<coverage-report outfile="${outputDir}/coverage.xml">
+			<report todir="${outputDir}/coverage/" />
+		</coverage-report>
+		<!-- PHPUnitテストのレポート。XML⇒HTML変換 -->
+		<phpunitreport
+			infile="${outputDir}/phpunit.xml" 
+			format="frames"
+			todir="${outputDir}/unitereport"/>
+	</target>
+<!--
   <target name="phpcpd">
     <phpcpd minTokens="10">
       <fileset dir=".">
@@ -28,20 +61,6 @@
     </phpmd>
   </target>
 
-<target name="phpunit">
-	<phpunit
-		configuration="fuel/app/phpunit.xml"
-		printsummary="true"
-	>
-		<formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
-		<batchtest>
-			<fileset dir=".">
-				<include name="fuel/app/tests/**/**.php"/>
-			</fileset>
-		</batchtest>
-	</phpunit>
-</target>
-
   <target name="phpdoc">
     <mkdir dir="phpdoc" />
     <phpdoc title="API Documentation"
@@ -51,7 +70,7 @@
       </fileset>
     </phpdoc>
   </target>
-
+-->
   <target name="all" depends="phpunit">
   </target>
 

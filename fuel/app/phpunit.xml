@@ -26,19 +26,21 @@
 	</php>
 
 	<testsuites>
+<!--
 		<testsuite name="core">
 			<directory suffix=".php">../core/tests</directory>
-			<!--<file>/path/to/MyTest.php</file>
-			<exclude>/path/to/exclude</exclude> -->
+			<file>/path/to/MyTest.php</file>
+			<exclude>/path/to/exclude</exclude>
 		</testsuite>
+-->
 		<testsuite name="packages">
 			<directory suffix=".php">../packages/*/tests</directory>
 		</testsuite>
 		<testsuite name="app">
 			<directory suffix=".php">../app/tests</directory>
 		</testsuite>
+		<testsuite name="modules">
+			<directory suffix=".php">../app/modules/*/tests</directory>
+		</testsuite>
 	</testsuites>
-	<testsuite name="modules">
-		<directory suffix=".php">../app/modules/*/tests</directory>
-	</testsuite>
 </phpunit>
