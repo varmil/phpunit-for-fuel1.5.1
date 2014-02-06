@@ -14,7 +14,7 @@ class Test_Model_Logic_Foofoo extends TestCase
 		$this->foo = new Foofoo();
 	}
 
-    public function test_foo()
+	public function test_foo()
 	{
 		$this->assertSame(999, $this->foo->get_foo());
 	}
