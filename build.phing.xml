@@ -28,16 +28,19 @@
     </phpmd>
   </target>
 
- <target name="phpunit">
-   <phpunit>
-     <formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
-     <batchtest>
-       <fileset dir=".">
-         <include name="./fuel/app/tests/**/*.php"/>
-       </fileset>
-     </batchtest>
-   </phpunit>
- </target>
+<target name="phpunit">
+	<phpunit
+		configuration="fuel/app/phpunit.xml"
+		printsummary="true"
+	>
+		<formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
+		<batchtest>
+			<fileset dir=".">
+				<include name="fuel/app/tests/**/**.php"/>
+			</fileset>
+		</batchtest>
+	</phpunit>
+</target>
 
   <target name="phpdoc">
     <mkdir dir="phpdoc" />
