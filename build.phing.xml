@@ -31,9 +31,11 @@
  <target name="phpunit">
    <phpunit>
      <formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
-     <exec dir="." command="
-            phpunit -c fuel/app/phpunit.xml --group AY
-        "/>
+     <batchtest>
+       <fileset dir=".">
+         <include name="fuel/app/tests/**/*.php"/>
+       </fileset>
+     </batchtest>
    </phpunit>
  </target>
 
