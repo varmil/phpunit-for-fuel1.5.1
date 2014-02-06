@@ -33,7 +33,7 @@
      <formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
      <batchtest>
        <fileset dir=".">
-         <include name="fuel/app/tests/model/**.php"/>
+         <include name="./fuel/app/tests/model/**.php"/>
        </fileset>
      </batchtest>
    </phpunit>
