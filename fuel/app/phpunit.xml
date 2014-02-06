@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors="false"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    forceCoversAnnotation="false"
+    processIsolation="false"
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+    strict="true"
+    verbose="true"
+	bootstrap="../core/bootstrap_phpunit.php"
+>
+	<php>
+		<server name="doc_root" value="../../"/>
+		<server name="app_path" value="fuel/app"/>
+		<server name="core_path" value="fuel/core"/>
+		<server name="package_path" value="fuel/packages"/>
+		<server name="FUEL_ENV" value="test"/>
+	</php>
+
+	<testsuites>
+		<testsuite name="core">
+			<directory suffix=".php">../core/tests</directory>
+			<!--<file>/path/to/MyTest.php</file>
+			<exclude>/path/to/exclude</exclude> -->
+		</testsuite>
+		<testsuite name="packages">
+			<directory suffix=".php">../packages/*/tests</directory>
+		</testsuite>
+		<testsuite name="app">
+			<directory suffix=".php">../app/tests</directory>
+		</testsuite>
+	</testsuites>
+	<testsuite name="modules">
+		<directory suffix=".php">../app/modules/*/tests</directory>
+	</testsuite>
+</phpunit>
