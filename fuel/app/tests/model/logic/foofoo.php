@@ -5,9 +5,9 @@
  * @group App
  * @group AY
  */
- use \Model\Logic\Foofoo;
+use \Model\Logic\Foofoo;
  
- class Test_Model_Logic_Foofoo extends TestCase
+class Test_Model_Logic_Foofoo extends TestCase
 {
 	private $foo;
 	public function setUp() {
@@ -15,7 +15,7 @@
 	}
 
     public function test_foo()
-    {
+	{
 		$this->assertSame(999, $this->foo->get_foo());
-    }
+	}
 }

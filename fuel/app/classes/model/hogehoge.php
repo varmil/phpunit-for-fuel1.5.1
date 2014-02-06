@@ -8,9 +8,9 @@ class Hogehoge extends \Model {
 	
 	protected $hoge;
 	
-    public  function get_hoge()
-    {
+	public  function get_hoge()
+	{
 		$this->hoge = 777;
 		return $this->hoge;
-    }
+	}
 }
