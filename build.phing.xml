@@ -23,6 +23,7 @@
 			codecoverage="true"
 		>
 			<formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
+			<formatter type="clover" outfile="${outputDir}/clover.xml"/>
 			<batchtest>
 				<fileset dir=".">
 					<include name="fuel/app/tests/**/**.php"/>
@@ -30,11 +31,14 @@
 			</batchtest>
 		</phpunit>
 		<!-- コードカバレッジのレポート。XML⇒HTML変換 -->
-		<coverage-report outfile="${outputDir}/coverage.xml">
+		<coverage-report outfile="${outputDir}/clover.xml">
 			<report todir="${outputDir}/coverage/" />
 		</coverage-report>
 		<!-- PHPUnitテストのレポート。XML⇒HTML変換 -->
-
+		<phpunitreport
+			infile="${outputDir}/phpunit.xml" 
+			format="frames"
+			todir="${outputDir}/unitereport"/>
 	</target>
 <!--
   <target name="phpcpd">
