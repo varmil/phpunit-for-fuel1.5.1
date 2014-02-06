@@ -34,10 +34,7 @@
 			<report todir="${outputDir}/coverage/" />
 		</coverage-report>
 		<!-- PHPUnitテストのレポート。XML⇒HTML変換 -->
-		<phpunitreport
-			infile="${outputDir}/phpunit.xml" 
-			format="frames"
-			todir="${outputDir}/unitereport"/>
+
 	</target>
 <!--
   <target name="phpcpd">
